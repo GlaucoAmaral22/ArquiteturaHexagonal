@@ -16,7 +16,7 @@ public class HttpCurrencyGateway implements CurrencyGateway {
     }
 
     @Override
-    public float getCurrency() {
+    public float getUSDQuotation() {
         CurrencyResponseBody reponseBody = this.restTemplate.getForObject(
                 "https://economia.awesomeapi.com.br/last/USD-BRL",
                 CurrencyResponseBody.class

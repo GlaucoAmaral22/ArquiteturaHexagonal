@@ -27,7 +27,7 @@ public class InvoiceController {
         CalculateInvoice invoice = new CalculateInvoice(transactionDAO, externalClient);
         return invoice.execute(cardNumber);
     }
-
+    //criacao da specification pra pegar somente do mes atual
     //criacao testes domain
-    //tratativa de erros
+    //tratativa de erros da consulta
 }

@@ -5,6 +5,7 @@ import com.hexagonalarchitecture.domain.ports.TransactionDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,8 +19,11 @@ public class TransactionDAODatabase implements TransactionDAO {
     }
 
     @Override
-    public List<Transaction> findCurrentTransactions(int cardNumber, int year, int month) {
-        List<TransactionEntity> transactionEntities = transactionRepository.findAllTransactionsByCardAndCurrentMonth(cardNumber,year,month);
+    public List<Transaction> findCurrentTransactions(int cardNumber, LocalDate localDate) {
+        int year = localDate.getYear();
+        int month = localDate.getMonthValue();
+        List<TransactionEntity> transactionEntities =
+                transactionRepository.findAllTransactionsByCardAndCurrentMonth(cardNumber,year,month);
         List<Transaction> transactions = new ArrayList<>();
         for (TransactionEntity entity : transactionEntities)
             transactions.add(new Transaction(

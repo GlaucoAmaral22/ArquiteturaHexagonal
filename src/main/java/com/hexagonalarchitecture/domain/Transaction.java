@@ -4,13 +4,13 @@ import java.util.Date;
 
 public class Transaction {
 
-    Integer cardNumber;
+    private final Integer cardNumber;
 
-    int amount;
+    private final int amount;
 
-    String currency;
+    private final String currency;
 
-    Date date;
+    private final Date date;
     public Transaction(Integer cardNumber, int amount, String currency, Date date) {
         this.cardNumber = cardNumber;
         this.amount = amount;
@@ -33,5 +33,7 @@ public class Transaction {
         return this.date;
     }
 
-
+    public boolean isUSD() {
+        return this.currency.equals("USD");
+    }
 }

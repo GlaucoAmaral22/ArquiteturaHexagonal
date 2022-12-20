@@ -17,19 +17,15 @@ public class CalculateInvoice {
     }
 
     public float execute(int cardNumber) {
-        float USDCotation = currencyGateway.getCurrency();
-        LocalDate localDate = LocalDate.now();
-        int year = localDate.getYear();
-        int month = localDate.getMonthValue();
-        List<Transaction> transactions = this.transactionDAO.findCurrentTransactions(cardNumber, year, month);
+        float USDQuotation = currencyGateway.getUSDQuotation();
+        List<Transaction> transactions = this.transactionDAO.findCurrentTransactions(cardNumber, LocalDate.now());
         float total = 0;
         for (Transaction transaction : transactions) {
-            if(transaction.getCurrency().equals("USD")){
-                total+= USDCotation * transaction.getAmount();
+            if (transaction.isUSD()) {
+                total += USDQuotation * transaction.getAmount();
+                continue;
             }
-            if(transaction.getCurrency().equals("USD")){
-                total+= transaction.getAmount();
-            }
+            total += transaction.getAmount();
         }
         return total;
     }
