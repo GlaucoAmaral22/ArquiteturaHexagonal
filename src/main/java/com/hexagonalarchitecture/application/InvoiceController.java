@@ -23,9 +23,10 @@ public class InvoiceController {
     }
 
     @GetMapping("/card/{number}")
-    public float calculateInvoice(@PathVariable("number") int cardNumber) {
+    public InvoiceResponse calculateInvoice(@PathVariable("number") int cardNumber) {
         CalculateInvoice invoice = new CalculateInvoice(transactionDAO, externalClient);
-        return invoice.execute(cardNumber);
+        float total = invoice.execute(cardNumber);
+        return new InvoiceResponse(total);
     }
     //criacao da specification pra pegar somente do mes atual
     //criacao testes domain
