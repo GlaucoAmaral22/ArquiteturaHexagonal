@@ -1,4 +1,4 @@
-package com.hexagonalarchitecture.domain;
+package com.Invoicemicrosservice.application.core.domain;
 
 import java.util.Date;
 

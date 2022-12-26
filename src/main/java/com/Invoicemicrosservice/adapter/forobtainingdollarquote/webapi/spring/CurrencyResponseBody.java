@@ -1,9 +1,13 @@
-package com.hexagonalarchitecture.infraestructure.externalcommunication;
+package com.Invoicemicrosservice.adapter.forobtainingdollarquote.webapi.spring;
 
 public class CurrencyResponseBody {
     public UsdBrl USDBRL;
     public UsdBrl getUsdBrl() {
         return this.USDBRL;
+    }
+
+    public boolean isEmpty() {
+        return this.USDBRL == null;
     }
 
     public static class UsdBrl{
@@ -12,4 +16,5 @@ public class CurrencyResponseBody {
             return this.bid;
         }
     }
+
 }

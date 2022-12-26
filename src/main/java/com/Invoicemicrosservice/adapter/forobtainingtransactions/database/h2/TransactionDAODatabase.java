@@ -1,7 +1,7 @@
-package com.hexagonalarchitecture.infraestructure.database;
+package com.Invoicemicrosservice.adapter.forobtainingtransactions.database.h2;
 
-import com.hexagonalarchitecture.domain.Transaction;
-import com.hexagonalarchitecture.domain.ports.TransactionDAO;
+import com.Invoicemicrosservice.application.core.domain.Transaction;
+import com.Invoicemicrosservice.application.driven.forobtainingtransactions.ForObtainingTransactions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -10,16 +10,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class TransactionDAODatabase implements TransactionDAO {
+public class TransactionDAODatabase implements ForObtainingTransactions {
 
     TransactionRepository transactionRepository;
+
     @Autowired
     public TransactionDAODatabase(TransactionRepository transactionRepository) {
         this.transactionRepository = transactionRepository;
     }
-
     @Override
-    public List<Transaction> findCurrentTransactions(int cardNumber, LocalDate localDate) {
+    public List<Transaction> getTransactions(int cardNumber) {
+        LocalDate localDate = LocalDate.now();
         int year = localDate.getYear();
         int month = localDate.getMonthValue();
         List<TransactionEntity> transactionEntities =

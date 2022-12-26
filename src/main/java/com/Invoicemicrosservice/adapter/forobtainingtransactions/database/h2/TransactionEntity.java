@@ -1,4 +1,4 @@
-package com.hexagonalarchitecture.infraestructure.database;
+package com.Invoicemicrosservice.adapter.forobtainingtransactions.database.h2;
 
 import javax.persistence.*;
 import java.util.Date;

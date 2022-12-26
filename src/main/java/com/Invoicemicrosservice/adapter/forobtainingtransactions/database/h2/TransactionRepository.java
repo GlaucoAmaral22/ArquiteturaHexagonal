@@ -1,4 +1,4 @@
-package com.hexagonalarchitecture.infraestructure.database;
+package com.Invoicemicrosservice.adapter.forobtainingtransactions.database.h2;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
